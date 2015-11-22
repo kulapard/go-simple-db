@@ -1,5 +1,6 @@
 # go-simple-db
 [![Build Status](https://travis-ci.org/kulapard/go-simple-db.svg)](https://travis-ci.org/kulapard/go-simple-db)
+[![codecov.io](https://codecov.io/github/kulapard/go-simple-db/coverage.svg?branch=master)](https://codecov.io/github/kulapard/go-simple-db?branch=master)
 
 Simple in-memory database written in Go. Same as Redis but much simpler.
 
