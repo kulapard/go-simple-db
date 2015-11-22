@@ -11,6 +11,12 @@ $ go install github.com/kulapard/go-simple-db
 $ go-simple-db
 ```
 
+## Testing
+
+```
+$ go test -v github.com/kulapard/go-simple-db
+```
+
 ## Commands
 ### Data Commands
 
