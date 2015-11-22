@@ -1,6 +1,11 @@
 # go-simple-db
 Simple in-memory database written in Go. Same as Redis but much simpler.
 
+## Requirements
+Go (1.5.1 or higher). See installation instruction on official Golang site
+([https://golang.org/doc/install](https://golang.org/doc/install)).
+
+
 ## Installation
 ```
 $ go install github.com/kulapard/go-simple-db  
