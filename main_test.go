@@ -94,6 +94,8 @@ func TestCommands(t *testing.T) {
 
 	cmd = &NumEqualTo{Value: value}
 	Assert("NUMEQUALTO", cmd.Execute(), strconv.Itoa(count))
+
+	cmd.Undo() // just for coverage
 }
 
 func TestTransactions(t *testing.T) {
@@ -104,6 +106,12 @@ func TestTransactions(t *testing.T) {
 
 	key = RandStringRunes(10)
 	value1, value2 = RandStringRunes(10), RandStringRunes(10)
+
+	// No transactions
+	cleanStorage()
+	transactions.Commit()
+	Assert("No transactions", transactions.Rollback(), ErrNoTransaction)
+	Assert("No transactions", transactions.Commit(), ErrNoTransaction)
 
 	// Single transaction
 	cleanStorage()
