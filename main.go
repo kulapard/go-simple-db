@@ -89,12 +89,12 @@ func (self *NestedTransactions) popLast() (*Transaction, error) {
 	return tr, nil
 }
 
-// Commit last opened transaction
+// Commit all opened transactions
 func (self *NestedTransactions) Commit() error {
-	_, err := self.popLast();
-	if err != nil {
-		return err
+	if len(self.transactions) == 0 {
+		return ErrNoTransaction
 	}
+	self.transactions = []*Transaction{}
 	return nil
 }
 

@@ -32,6 +32,10 @@ func BuildAssert(t *testing.T) func(name string, actual, expected interface{}) {
 	}
 }
 
+func cleanStorage()  {
+	dbStorage = map[string]string{}
+}
+
 func TestCommands(t *testing.T) {
 	Assert := BuildAssert(t)
 
@@ -39,6 +43,7 @@ func TestCommands(t *testing.T) {
 	var key, value string
 
 	// SET
+	cleanStorage()
 	key = RandStringRunes(10)
 	value = RandStringRunes(10)
 
@@ -48,10 +53,16 @@ func TestCommands(t *testing.T) {
 	Assert("SET", dbStorage[key], value)
 
 	// GET
+	cleanStorage()
+	dbStorage[key] = value
+
 	cmd = &Get{Key: key}
 	Assert("GET", cmd.Execute(), value)
 
 	// UNSET
+	cleanStorage()
+	dbStorage[key] = value
+
 	cmd = &Unset{Key: key}
 	cmd.Execute()
 	_, ok := dbStorage[key]
@@ -61,14 +72,16 @@ func TestCommands(t *testing.T) {
 	Assert("UNSET", dbStorage[key], value)
 
 	// NUMEQUALTO
+	cleanStorage()
+
 	count := rand.Intn(10)
-	for i := count; i > 0; i-- {
+	for i := 0; i < count; i++ {
 		key = RandStringRunes(10)
 		dbStorage[key] = value
 	}
 
 	cmd = &NumEqualTo{Value: value}
-	Assert("UNSET", cmd.Execute(), strconv.Itoa(count))
+	Assert("NUMEQUALTO", cmd.Execute(), strconv.Itoa(count))
 }
 
 func TestTransactions(t *testing.T) {
@@ -81,6 +94,7 @@ func TestTransactions(t *testing.T) {
 	value1, value2 = RandStringRunes(10), RandStringRunes(10)
 
 	// Single transaction
+	cleanStorage()
 	cmd = &Set{Key: key, Value: value1}
 	transactions.Begin()
 	transactions.AddCommand(cmd)
@@ -94,6 +108,7 @@ func TestTransactions(t *testing.T) {
 	Assert("Single Tr", ok, false)
 
 	// Nested transactions
+	cleanStorage()
 	cmd = &Set{Key: key, Value: value1}
 	transactions.Begin()
 	transactions.AddCommand(cmd)
@@ -116,5 +131,14 @@ func TestTransactions(t *testing.T) {
 
 	_, ok = dbStorage[key]
 	Assert("Nested Tr", ok, false)
+
+	// Begin/Commit
+	cleanStorage()
+	transactions.Begin()
+	transactions.Begin()
+	transactions.Begin()
+	Assert("Nested Tr", len(transactions.transactions), 3)
+	transactions.Commit()
+	Assert("Nested Tr", len(transactions.transactions), 0)
 
 }
