@@ -52,12 +52,18 @@ func TestCommands(t *testing.T) {
 
 	Assert("SET", dbStorage[key], value)
 
+	cmd.Undo()
+	_, ok := dbStorage[key]
+	Assert("SET", ok, false)
+
 	// GET
 	cleanStorage()
 	dbStorage[key] = value
 
 	cmd = &Get{Key: key}
 	Assert("GET", cmd.Execute(), value)
+
+	cmd.Undo() // just for coverage
 
 	// UNSET
 	cleanStorage()
