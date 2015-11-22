@@ -10,7 +10,8 @@ Go (1.5.1 or higher). See installation instruction on official Golang site
 
 ## Installation
 ```
-$ go install github.com/kulapard/go-simple-db  
+$ go get github.com/kulapard/go-simple-db
+$ go install github.com/kulapard/go-simple-db
 ```
 ## Running
 
