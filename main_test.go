@@ -41,6 +41,7 @@ func TestCommands(t *testing.T) {
 
 	var cmd Executable
 	var key, value string
+	var ok bool
 
 	// SET
 	cleanStorage()
@@ -53,7 +54,7 @@ func TestCommands(t *testing.T) {
 	Assert("SET", dbStorage[key], value)
 
 	cmd.Undo()
-	_, ok := dbStorage[key]
+	_, ok = dbStorage[key]
 	Assert("SET", ok, false)
 
 	// GET
@@ -65,13 +66,18 @@ func TestCommands(t *testing.T) {
 
 	cmd.Undo() // just for coverage
 
+	cleanStorage()
+	key = RandStringRunes(10)
+	cmd = &Get{Key: key}
+	Assert("GET", cmd.Execute(), "NULL")
+
 	// UNSET
 	cleanStorage()
 	dbStorage[key] = value
 
 	cmd = &Unset{Key: key}
 	cmd.Execute()
-	_, ok := dbStorage[key]
+	_, ok = dbStorage[key]
 	Assert("UNSET", ok, false)
 
 	cmd.Undo()
