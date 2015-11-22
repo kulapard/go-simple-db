@@ -142,3 +142,29 @@ func TestTransactions(t *testing.T) {
 	Assert("Nested Tr", len(transactions.transactions), 0)
 
 }
+
+func TestRunDBCommand(t *testing.T) {
+	Assert := BuildAssert(t)
+
+	var key, value string
+
+	cleanStorage()
+	key = RandStringRunes(10)
+	value = RandStringRunes(10)
+
+	// Good
+	RunDBCommand("SET", key, value)
+	RunDBCommand("GET", key)
+	RunDBCommand("UNSET", key)
+	RunDBCommand("NUMEQUALTO", key)
+	RunDBCommand("BEGIN")
+	RunDBCommand("COMMIT")
+	RunDBCommand("ROLLBACK")
+
+	// Bad
+	Assert("Bad", RunDBCommand("SOMEBADCOMMAND"), ErrUnknownCommand)
+	Assert("Bad", RunDBCommand("SET", key), ErrNotEnoughArguments)
+	Assert("Bad", RunDBCommand("GET"), ErrNotEnoughArguments)
+	Assert("Bad", RunDBCommand("UNSET"), ErrNotEnoughArguments)
+	Assert("Bad", RunDBCommand("NUMEQUALTO"), ErrNotEnoughArguments)
+}
