@@ -3,11 +3,11 @@
 
 Simple in-memory database written in Go. Same as Redis but much simpler.
 
+**IMPORTANT:** This is not a real database. The only reason I made it is to show my Go programming skills.
+
 ## Requirements
 Go (1.5.1 or higher). See installation instruction on official Golang site
 ([https://golang.org/doc/install](https://golang.org/doc/install)).
-
-**IMPORTANT:** This is not a real database. The only reason I made it is to show my Go programming skills.
 
 ## Installation
 ```
