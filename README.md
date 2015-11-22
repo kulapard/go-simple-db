@@ -1,4 +1,6 @@
 # go-simple-db
+[![Build Status](https://travis-ci.org/kulapard/go-simple-db.svg)](https://travis-ci.org/kulapard/go-simple-db)
+
 Simple in-memory database written in Go. Same as Redis but much simpler.
 
 ## Requirements
@@ -29,7 +31,7 @@ $ go test -v github.com/kulapard/go-simple-db
 - `GET <name>` – print out the value of the variable name, or `NULL` if that variable is not set.
 - `UNSET <name>` – unset the variable name, making it just like that variable was never set.
 - `NUMEQUALTO <value>` – print out the number of variables that are currently set to value. If no variables equal that value, print `0`.
-- `END` – exit the program. Your program will always receive this as its last command.
+- `END` – exit the program.
 
 ### Transaction Commands
 
