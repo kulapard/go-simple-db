@@ -203,6 +203,7 @@ func PrintErr(err error) {
 	}
 }
 
+// Main function to run DB command
 func RunDBCommand(cmd_text string, cmd_args...string) error {
 	switch cmd_text {
 	case "SET":
