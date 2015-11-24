@@ -86,7 +86,7 @@ func TestCommands(t *testing.T) {
 	// NUMEQUALTO
 	cleanStorage()
 
-	count := rand.Intn(10)
+	count := rand.Intn(10) + 3
 	for i := 0; i < count; i++ {
 		key = RandStringRunes(10)
 		dbStorage[key] = value
