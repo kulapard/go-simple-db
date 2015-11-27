@@ -5,12 +5,6 @@ go:
   - 1.5.1
   - tip
 
-# before_install:
-#   # Add Godeps dependencies to GOPATH and PATH
-#   - export GOPATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace:$GOPATH"
-#   - export PATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace/bin:$PATH"
-#   - go get -t ./...
-
 script:
   - go test -v -coverprofile=coverage.txt -covermode=atomic
   - go test -v -coverprofile=coverage.out -covermode=count
