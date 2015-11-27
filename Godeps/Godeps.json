@@ -1,0 +1,5 @@
+{
+	"ImportPath": "github.com/kulapard/go-simple-db",
+	"GoVersion": "go1.5.1",
+	"Deps": []
+}
