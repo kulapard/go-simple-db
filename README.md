@@ -7,6 +7,10 @@ Simple in-memory database written in Go. Same as Redis but much simpler.
 
 **IMPORTANT:** This is not a real database. The only reason I made it is to show my Go programming skills.
 
+> Problem: Simple Database
+
+> Implement an in-memory database similar to Redis. For simplicity your program will receive commands via stdin, and should write appropriate responses to stdout. Client must also support interactive input.
+
 ## Requirements
 Go (1.5.1 or higher). See installation instruction on official Golang site
 ([https://golang.org/doc/install](https://golang.org/doc/install)).
