@@ -1,4 +1,6 @@
 # go-simple-db
+
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/kulapard/go-simple-db/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/kulapard/go-simple-db.svg)](https://travis-ci.org/kulapard/go-simple-db)
 [![Code Health](https://landscape.io/github/kulapard/go-simple-db/master/landscape.svg?style=flat)](https://landscape.io/github/kulapard/go-simple-db/master)
 [![codecov.io](https://codecov.io/github/kulapard/go-simple-db/coverage.svg?branch=master)](https://codecov.io/github/kulapard/go-simple-db?branch=master)
