@@ -5,6 +5,7 @@
 [![Code Health](https://landscape.io/github/kulapard/go-simple-db/master/landscape.svg?style=flat)](https://landscape.io/github/kulapard/go-simple-db/master)
 [![codecov.io](https://codecov.io/github/kulapard/go-simple-db/coverage.svg?branch=master)](https://codecov.io/github/kulapard/go-simple-db?branch=master)
 [![Coverage Status](https://coveralls.io/repos/kulapard/go-simple-db/badge.svg?branch=master&service=github)](https://coveralls.io/github/kulapard/go-simple-db?branch=master)
+[![Go Report Card](http://goreportcard.com/badge/kulapard/go-simple-db)](http://goreportcard.com/report/kulapard/go-simple-db)
 
 Simple in-memory database written in Go. Same as Redis but much simpler.
 
